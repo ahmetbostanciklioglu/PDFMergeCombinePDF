@@ -1,14 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!-- Color xml File -->
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="pdf_document_text_color">#A42516</color>
-    <color name="add_button_color">#A40D0D</color>
-    <color name="background_color">#FFF4F2</color>
-    <color name="unselected_icon_color">#FFF4F2</color>
 
-    <color name="unselected_color">#80A42516</color>
+
+
+
+    <!-- Color of Pdf Merge App-->
+
+
+    <color name="background_color">#BBDEFB</color>
+
+    <color name="unselected_icon_color">#E3F2FD</color>
+
+
+    <color name="unselected_color">#BBDEFB</color>
+
+    <color name="pdf_document_text_color">#2196F3</color>
+    <color name="add_button_color">#1565C0</color>
+
 
 
 </resources>

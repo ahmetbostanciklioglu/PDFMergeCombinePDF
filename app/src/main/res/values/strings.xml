@@ -1,17 +1,4 @@
 <resources>
-    <string name="app_name">PDF Merge Combine PDF</string>
-    <string name="pdfmerge">PDFMERGE_</string>
-    <string name="not_empty">Select list cannot be empty</string>
-    <string name="date_format_text">ddMMyyyyhhmmss</string>
-
-    <!-- HomeFragment-->
-
-    <string name="pdf_documents_text">You don\u00E2\u0080\u0099t have any PDF Documents</string>
-    <string name="add_button_content_description">Add Button</string>
-    <string name="home_fragment">Home Screen</string>
-    <string name="pdf_icon_content_description">PDF Icon</string>
-    <string name="eleven_pages_placeholder">%d Pages</string>
-    <string name="brief_task">Brief-task-today.pdf</string>
 
     <!-- HistoryFragment-->
     <string name="history">History</string>
@@ -21,12 +8,37 @@
     <string name="files_will_be_merged">&#160;files will be merged</string>
     <string name="not_found">The merged pdf file was not found.</string>
 
+
+    <!-- Pdf Merge App Of General Strings -->
+    <string name="not_empty">Select list cannot be empty</string>
+    <string name="date_format_text">ddMMyyyyhhmmss</string>
+    <string name="app_name">PDF Merge Combine PDF</string>
+    <string name="pdfmerge">PDFMERGE_</string>
+
+
+
+
+    <!-- HomeFragment-->
+
+    <string name="pdf_icon_content_description">PDF Icon</string>
+    <string name="eleven_pages_placeholder">%d Pages</string>
+
+    <string name="home_fragment">Home Screen</string>
+
+
+    <string name="pdf_documents_text">You don\u00E2\u0080\u0099t have any PDF Documents</string>
+    <string name="add_button_content_description">Add Button</string>
+
+
+    <string name="brief_task">Brief-task-today.pdf</string>
+
+
     <!-- Admob change banner_id,interstitial_id,rewarded_id -# ..._test_id dont change # -->
     <string name="banner_test_id">ca-app-pub-3940256099942544/6300978111</string>
-    <string name="banner_id">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="banner_id">ca-app-pub-5044389193057132/5945305672</string>
     <string name="interstitial_test_id">ca-app-pub-3940256099942544/1033173712</string>
-    <string name="interstitial_id">ca-app-pub-3940256099942544/1033173712</string>
+    <string name="interstitial_id">ca-app-pub-5044389193057132/3050714873</string>
     <string name="rewarded_test_id">ca-app-pub-3940256099942544/5224354917</string>
-    <string name="rewarded_id">ca-app-pub-3940256099942544/5224354917</string>
+    <string name="rewarded_id">ca-app-pub-5044389193057132/4057508936</string>
 
 </resources>

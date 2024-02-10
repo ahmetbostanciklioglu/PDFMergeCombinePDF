@@ -23,9 +23,6 @@ import com.ahmetbostancikli.combine.pdf.utils.PdfMergeTool
 import com.google.android.gms.ads.MobileAds
 import com.wada811.databindingktx.dataBinding
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 
@@ -67,6 +64,8 @@ class MainActivity : PdfPickerActivity(R.layout.activity_main) {
 
         window.statusBarColor = ContextCompat.getColor(this, R.color.white)
         setContent {
+            //TODO: Updated:
+            navController = rememberNavController()
 
             PdfAppContent()
 
@@ -100,9 +99,8 @@ class MainActivity : PdfPickerActivity(R.layout.activity_main) {
             is NavigationItem.Merge -> if(uriList.size>1) {
 
                 isLoading = true
-                CoroutineScope(Dispatchers.IO).launch {
-                    pdfMergeTool.mergePDFs(uriList)
-                }
+                pdfMergeTool.mergePDFs(uriList)
+
             }
 
             //Navigation Item is History

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "878805945608",
+    "project_id": "easyideasllc-pdfmerge",
+    "storage_bucket": "easyideasllc-pdfmerge.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:878805945608:android:e82534ef3db83c89c070bd",
+        "android_client_info": {
+          "package_name": "co.torpido.pdfcombine.mergepdfahmetbostancikli"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCVThUR8eWoq4IJgbh5isZwzlvq4yZV0MU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

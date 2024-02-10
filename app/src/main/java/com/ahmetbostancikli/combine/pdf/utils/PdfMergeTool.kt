@@ -38,29 +38,21 @@ class PdfMergeTool(private val context: Context) {
 
     //Merge PDfs Function
     fun mergePDFs(selectedPdfUriList: MutableList<Uri>) {
-
+        CoroutineScope(Dispatchers.IO).launch {
 
         if (selectedPdfUriList.isNotEmpty()) {
 
-
             try {
-                CoroutineScope(Dispatchers.Main).launch {
                     val pdfDocument = PdfDocument()
                     for (i in selectedPdfUriList.indices) {
 
-                        withContext(Dispatchers.IO) {
-
-
                             val parcelFileDescriptor: ParcelFileDescriptor? =
                                 context.contentResolver.openFileDescriptor(selectedPdfUriList[i], "r")
-
 
                             if (parcelFileDescriptor != null) {
 
                                 val renderer = PdfRenderer(parcelFileDescriptor)
                                 val pageCount = renderer.pageCount
-
-
 
 
                                 for (pageIndex in 0 until pageCount) {
@@ -99,21 +91,24 @@ class PdfMergeTool(private val context: Context) {
                                 }
                                 renderer.close()
                             }
-                        }
+
                     }
 
                     savePdfDocument(pdfDocument)
 
-                    pdfDocument.close()
-                }
-            } catch (e: Exception) {
 
-                e.localizedMessage?.let { successListener?.invoke(false, it) }
+            } catch (e: Exception) {
+                e.localizedMessage?.let {
+                    withContext(Dispatchers.Main) {
+                        successListener?.invoke(false, it)
+                    }
+                }
             }
         } else {
-
-
-            successListener?.invoke(false, context.getString(R.string.not_empty))
+            withContext(Dispatchers.Main) {
+                successListener?.invoke(false, context.getString(R.string.not_empty))
+            }
+        }
         }
     }
 
@@ -130,18 +125,26 @@ class PdfMergeTool(private val context: Context) {
 
     //Save PDf Document Function
     private fun savePdfDocument(pdfDocument: PdfDocument) {
+        CoroutineScope(Dispatchers.IO).launch {
+            val fileName = context.getString(R.string.pdfmerge) + SimpleDateFormat(context.getString(R.string.date_format_text), Locale.UK).format(Calendar.getInstance().time)
 
-        val fileName = context.getString(R.string.pdfmerge) + SimpleDateFormat(context.getString(R.string.date_format_text), Locale.UK).format(Calendar.getInstance().time)
+            val file = File(createPdfMergeDirectory(),"/$fileName.pdf")
 
-        val file = File(createPdfMergeDirectory(),"/$fileName.pdf")
-
-        try {
-            pdfDocument.writeTo(FileOutputStream(file))
-            successListener?.invoke(true,"")
-        } catch (e: IOException) {
-            e.localizedMessage?.let { successListener?.invoke(false, it) }
+            try {
+                pdfDocument.writeTo(FileOutputStream(file))
+                withContext(Dispatchers.Main) {
+                    successListener?.invoke(true,"")
+                }
+            } catch (e: IOException) {
+                e.localizedMessage?.let {
+                    withContext(Dispatchers.Main) {
+                        successListener?.invoke(false, it)
+                    }
+                }
+            }
+            pdfDocument.close()
         }
-        pdfDocument.close()
+
     }
 
 

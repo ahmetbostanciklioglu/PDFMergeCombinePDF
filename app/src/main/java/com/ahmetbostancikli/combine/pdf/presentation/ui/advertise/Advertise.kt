@@ -66,8 +66,11 @@ class Advertise(private val activity: Activity? = null) {
     fun showInterstitialAd(){
         if (activity != null) {
             adRequest?.let { adRequest ->
-                InterstitialAd.load(activity,
-                    interstitialAdUnitId!!, adRequest, object : InterstitialAdLoadCallback() {
+                InterstitialAd.load(
+                    activity,
+                    interstitialAdUnitId!!,
+                    adRequest,
+                    object : InterstitialAdLoadCallback() {
                         override fun onAdFailedToLoad(adError: LoadAdError) {
                             mInterstitialAd = null
                         }
@@ -75,7 +78,8 @@ class Advertise(private val activity: Activity? = null) {
                             mInterstitialAd = interstitialAd
                             mInterstitialAd?.show(activity)
                         }
-                    })
+                    }
+                )
             }
         }
     }

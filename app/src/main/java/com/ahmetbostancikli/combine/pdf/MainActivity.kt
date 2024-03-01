@@ -7,6 +7,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.tooling.preview.Preview
@@ -35,8 +36,7 @@ class MainActivity : PdfPickerActivity(R.layout.activity_main) {
     lateinit var pdfMergeTool: PdfMergeTool
 
 
-
-    private var newSize by mutableStateOf(0)
+    private var newSize by mutableIntStateOf(0)
     private var isLoading by mutableStateOf(false)
 
     //Advertise Variable
@@ -46,29 +46,13 @@ class MainActivity : PdfPickerActivity(R.layout.activity_main) {
     private lateinit var navController: NavHostController
     private var uriList: MutableList<Uri> = mutableListOf()
 
-
-
-
-
-
-    @Composable
-    fun PdfAppContent() {
-        navController = rememberNavController()
-    }
-
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initListener()
 
         window.statusBarColor = ContextCompat.getColor(this, R.color.white)
         setContent {
-            //TODO: Updated:
             navController = rememberNavController()
-
-            PdfAppContent()
-
             PdfApp(
                 addPDF = {
                     openFilePicker()
@@ -116,15 +100,11 @@ class MainActivity : PdfPickerActivity(R.layout.activity_main) {
     @Composable
     fun MainScreenOfPreview() {
         MaterialTheme {
-            PdfAppContent()
+            navController = rememberNavController()
             PdfApp(
                 addPDF = {
                     openFilePicker()
-                },
-                navController,
-                onNavItemClicked,
-                newSize,
-                isLoading
+                }, navController, onNavItemClicked, newSize, isLoading
             )
         }
     }
